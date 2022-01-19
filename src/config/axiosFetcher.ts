@@ -6,7 +6,7 @@ import {
   responseInterceptorError,
 } from 'config/axiosInterceptor';
 
-const Axios = axios.create();
+const Axios = axios.create({ baseURL: 'http://localhost:3000/' });
 
 Axios.interceptors.request.use(requestInterceptor, requestInterceptorError);
 Axios.interceptors.response.use(responseInterceptor, responseInterceptorError);
