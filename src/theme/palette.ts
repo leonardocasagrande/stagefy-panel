@@ -29,8 +29,11 @@ const palette: PaletteOptions = {
     disabled: colors.disabled,
   },
   background: {
-    default: colors.secondaryBg,
-    paper: colors.primaryBg,
+    default: colors.primaryBg,
+    paper: colors.secondaryBg,
+  },
+  info: {
+    main: colors.textLight,
   },
 };
 
