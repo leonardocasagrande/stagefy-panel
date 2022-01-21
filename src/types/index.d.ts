@@ -2,5 +2,31 @@ export interface IRoute {
   name: string;
   path: string;
   component: string;
-  secure: boolean;
+  permissions: ProfileRoleEnum[];
+}
+
+export enum ProfileRoleEnum {
+  Admin = 'ADMIN',
+  Professional = 'PROFESSIONAL',
+  Responsible = 'RESPONSIBLE',
+  Student = 'STUDENT',
+}
+
+export interface IUser {
+  createdAt: Date;
+  updatedAt: Date;
+  name: string;
+  email: string;
+  phone: string;
+  profileRole: ProfileRoleEnum;
+  id: string;
+  avatar?: string;
+}
+
+export interface IProfessional {
+  bio: string;
+  artisticName: string;
+  zipcode: string;
+  birthday: string;
+  user: IUser;
 }

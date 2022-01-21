@@ -57,6 +57,7 @@
            "code":80
         }
      ],
+     "@typescript-eslint/no-explicit-any": "off",
      "react-hooks/exhaustive-deps":"warn",
      "import/prefer-default-export":"off",
      "react/react-in-jsx-scope": "off",

@@ -1,5 +1,6 @@
 import loadable from '@loadable/component';
 import routes from 'config/routes';
+import { useAuth } from 'hooks/AuthContext';
 import NotFound from 'pages/NotFound';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { IRoute } from 'types';
@@ -7,11 +8,18 @@ import withError from './HOCs/withError';
 import withLoading from './HOCs/withLoading';
 
 const Switcher = () => {
+  const { user } = useAuth();
   return (
     <BrowserRouter>
       <Routes>
         {routes.map((route: IRoute) => {
-          const Component = loadable(() => import(`pages/${route.component}`));
+          const allowed =
+            !route.permissions.length ||
+            (!!user && route.permissions.includes(user.profileRole));
+          console.log(allowed);
+          console.log(route);
+          const componentRoute = !allowed ? 'NotAllowed' : route.component;
+          const Component = loadable(() => import(`pages/${componentRoute}`));
           const EnhacedComponent = withLoading(withError(Component));
           return (
             <Route

@@ -1,13 +1,12 @@
 import { Box, Button, Container, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-import notFound from 'assets/images/404.jpg';
-import { useAuth } from 'hooks/AuthContext';
+import notAllowed from 'assets/images/401.jpg';
 import roleDictionary from 'contents/roleDictionary';
+import { useAuth } from 'hooks/AuthContext';
 
-const NotFound = () => {
+const NotAllowed = () => {
   const navigate = useNavigate();
-
   const { user } = useAuth();
   const handleGoBack = () => {
     if (user && user.profileRole) {
@@ -30,13 +29,13 @@ const NotFound = () => {
         justifyContent="center"
       >
         <Typography variant="h2" align="center">
-          Página não encontrada
+          Página não autorizada
         </Typography>
-        <img src={notFound} alt="not-found" />
+        <img src={notAllowed} alt="not-authorized" />
         <Button onClick={handleGoBack}>Voltar</Button>
       </Box>
     </Container>
   );
 };
 
-export default NotFound;
+export default NotAllowed;

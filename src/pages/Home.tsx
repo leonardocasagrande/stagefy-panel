@@ -9,18 +9,28 @@ import {
 import axios from 'axios';
 import CreateAccountCard from 'components/CreateAccountCard';
 import LoginCard from 'components/LoginCard';
-import Modal from 'components/Modal';
+import Modal from 'components/modals/Modal';
+import roleDictionary from 'contents/roleDictionary';
 import { useApp } from 'hooks/AppContext';
-import { useState } from 'react';
+import { useAuth } from 'hooks/AuthContext';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { TLoginSchema } from 'schemas/login';
 import { TUserSchema } from 'schemas/user';
 import { createAccount } from 'services/sessions';
+import stagefyLogo from 'assets/images/logo_stagefy.png';
 
 const Home = () => {
   const theme = useTheme();
   const isSm = useMediaQuery(theme.breakpoints.down('sm'));
 
+  const { user } = useAuth();
+
+  const navigate = useNavigate();
+
   const { setErrorMessage, setLoading } = useApp();
+
+  const { signIn } = useAuth();
 
   const [create, setCreate] = useState(false);
 
@@ -31,8 +41,23 @@ const Home = () => {
     setCreate(false);
   };
 
-  const handleLogin = (values: TLoginSchema) => {
-    console.log(values);
+  useEffect(() => {
+    if (user) {
+      const role = roleDictionary[user.profileRole];
+      if (role) navigate(role.initialUrl);
+    }
+  }, [user, navigate]);
+
+  const handleLogin = async (info: TLoginSchema) => {
+    try {
+      await signIn(info);
+    } catch (err) {
+      if (axios.isAxiosError(err) && err.response) {
+        setErrorMessage(err.response.data.message);
+      } else if (typeof err === 'string') {
+        setErrorMessage(err);
+      }
+    }
   };
 
   const handleCreateAccount = async ({
@@ -83,7 +108,7 @@ const Home = () => {
             gap={4}
             maxWidth={create ? 400 : 680}
           >
-            <img src="logo_stagefy.png" alt="logo" />
+            <img src={stagefyLogo} alt="logo" />
             <Typography variant="subtitle1">
               Tornando o bilinguismo acessível através de experiências
               artísticas e culturais ao vivo e gamificadas.

@@ -35,16 +35,16 @@ const theme = createTheme({
         },
       },
     },
-    MuiButton: {
-      styleOverrides: {
-        text: {
-          fontWeight: 400,
-          fontSize: '0.875rem',
-          fontFamily: '"Baloo Bhaijaan 2", Geneva, Tahoma, sans-serif',
-          padding: 0,
-        },
-      },
-    },
+    // MuiButton: {
+    //   styleOverrides: {
+    //     text: {
+    //       fontWeight: 400,
+    //       fontSize: '0.875rem',
+    //       fontFamily: '"Baloo Bhaijaan 2", Geneva, Tahoma, sans-serif',
+    //       padding: 0,
+    //     },
+    //   },
+    // },
     MuiInput: {
       styleOverrides: {
         root: {

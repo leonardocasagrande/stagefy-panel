@@ -33,6 +33,13 @@ const typography: TypographyOptions = {
     fontFamily: '"Baloo Bhaijaan", "Trebuchet MS", Helvetica, sans-serif',
     lineHeight: '1.6875rem',
   },
+  h6: {
+    fontSize: '1rem',
+    fontWeight: 600,
+    lineHeight: '1.6875rem',
+    textTransform: 'uppercase',
+    fontFamily: '"Baloo Bhaijaan 2", Geneva, Tahoma, sans-serif',
+  },
   button: {
     fontSize: '1rem',
     letterSpacing: '0.727273px',

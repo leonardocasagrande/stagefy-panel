@@ -1,8 +1,18 @@
+/* eslint-disable no-param-reassign */
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 function requestInterceptor(config: AxiosRequestConfig) {
-  // console.info("Request Interceptor");
-  // console.log(config);
+  if (config.url === `http://localhost:3000/sessions/refresh-token`) {
+    config.headers = {
+      ...config.headers,
+    };
+  } else {
+    const token = localStorage.getItem('@stagefy:token');
+    config.headers = {
+      ...config.headers,
+      Authorization: token ? `Bearer ${token}` : '',
+    };
+  }
   return config;
 }
 
@@ -16,7 +26,7 @@ function responseInterceptor(response: AxiosResponse) {
   return response;
 }
 
-function responseInterceptorError(error: AxiosError) {
+async function responseInterceptorError(error: AxiosError) {
   return Promise.reject(error);
 }
 

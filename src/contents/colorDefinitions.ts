@@ -17,6 +17,9 @@ const colors = {
   primaryBg: '#FFFFFF',
   secondaryBg: '#F0F0F0',
   disabled: '#C4C4C4',
+  successMain: '#4CAF62',
+  successLight: '#7fe290',
+  successDark: '#0b7f36',
 };
 
 export { colors };

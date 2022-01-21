@@ -22,10 +22,17 @@ const palette: PaletteOptions = {
     main: colors.warningMain,
     dark: colors.warningDark,
     light: colors.warningLight,
+    contrastText: '#FFFFFF',
+  },
+  success: {
+    main: colors.successMain,
+    light: colors.successLight,
+    dark: colors.successDark,
+    contrastText: '#FFFFFF',
   },
   text: {
-    primary: colors.textDark,
-    secondary: colors.textMain,
+    primary: colors.textMain,
+    secondary: colors.textDark,
     disabled: colors.disabled,
   },
   background: {
