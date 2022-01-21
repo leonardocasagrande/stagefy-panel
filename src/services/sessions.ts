@@ -1,4 +1,5 @@
 import { Axios } from 'config/axiosFetcher';
+import { IUser } from '../types/index.d';
 
 interface ICreateAccount {
   name: string;
@@ -16,4 +17,24 @@ const createAccount = async (body: ICreateAccount) => {
   return data;
 };
 
-export { createAccount };
+interface ILogin {
+  email: string;
+  password: string;
+}
+
+interface ILoginResponse {
+  token: string;
+  refreshToken: string;
+  user: IUser;
+}
+
+const login = async (body: ILogin) => {
+  const { data } = await Axios.post<ILoginResponse>('/sessions', body);
+  return data;
+};
+
+const logout = async () => {
+  await Axios.delete('/sessions');
+};
+
+export { createAccount, login, logout };

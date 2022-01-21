@@ -7,6 +7,8 @@ type TProps = {
 type AppStateType = {
   errorMessage: string | null;
   setErrorMessage: (error: string | null) => void;
+  successMessage: string | null;
+  setSuccessMessage: (msg: string | null) => void;
   loading: boolean;
   setLoading: (val: boolean) => void;
 };
@@ -14,18 +16,23 @@ type AppStateType = {
 const AppContext = createContext<AppStateType>({
   errorMessage: null,
   setErrorMessage: () => undefined,
+  successMessage: null,
+  setSuccessMessage: () => undefined,
   loading: false,
   setLoading: () => undefined,
 });
 
 const AppState = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const appState = {
     errorMessage,
     setErrorMessage,
     loading,
     setLoading,
+    successMessage,
+    setSuccessMessage,
   };
   return appState;
 };

@@ -46,8 +46,7 @@
   color: #000000;
 }
 
-.swal2-confirm.swal2-styled.error {
-  background-color: #DC3B3B;
+.swal2-confirm.swal2-styled.swal2-styled {
   color: #F2F2F2;
   font-size: 1rem;
   letter-spacing: 0.727273px;
@@ -55,6 +54,22 @@
   font-family: "Baloo Bhaijaan", "Trebuchet MS", Helvetica, sans-serif;
   text-transform: uppercase;
   line-height: 1.5rem;
+}
+
+.swal2-icon.swal2-success.swal2-success [class^=swal2-success-line] {
+  background-color: #4CAF62;
+}
+
+.swal2-icon.swal2-success .swal2-success-ring.swal2-success-ring {
+  border-color: #4CAF62;
+}
+
+.swal2-confirm.swal2-styled.error {
+  background-color: #DC3B3B;
+}
+
+.swal2-confirm.swal2-styled.success {
+  background-color: #4CAF62;
 }
 
 .swal2-icon.swal2-error.swal2-icon-show {

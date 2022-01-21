@@ -13,7 +13,14 @@ const InlineButton = ({ children, onClick }: IInlineButtonProps) => {
   };
 
   return (
-    <Typography component="span" color="primary" onClick={handleClick}>
+    <Typography
+      sx={{
+        cursor: 'pointer',
+      }}
+      component="span"
+      color="primary"
+      onClick={handleClick}
+    >
       {children}
     </Typography>
   );

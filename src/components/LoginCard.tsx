@@ -1,15 +1,15 @@
-import { VisibilityOff, Visibility } from '@mui/icons-material';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 import {
-  Card,
-  Typography,
-  TextField,
-  InputAdornment,
-  IconButton,
   Button,
+  Card,
   Fade,
+  IconButton,
+  InputAdornment,
+  TextField,
+  Typography,
 } from '@mui/material';
 import { Box } from '@mui/system';
-import { getIn, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import { getErrorByKey } from 'helpers/utils';
 import { useState } from 'react';
 import { loginSchema } from 'schemas';
@@ -29,8 +29,6 @@ const LoginCard = ({ onChangeCreate, onSubmit }: ILoginCard) => {
     validationSchema: loginSchema,
     onSubmit,
   });
-
-  console.log(errors);
 
   const handlePasswordShow = () => {
     setShowPassword((prevValue) => !prevValue);
