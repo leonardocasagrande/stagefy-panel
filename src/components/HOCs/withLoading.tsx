@@ -7,7 +7,7 @@ const withLoading = (Component: React.ComponentType) => ({ ...props }) => {
   return (
     <>
       <Component {...props} />
-      <Backdrop open={loading}>
+      <Backdrop sx={{ zIndex: 9999 }} open={loading}>
         <CircularProgress color="primary" />
       </Backdrop>
     </>

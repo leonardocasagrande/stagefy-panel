@@ -5,7 +5,7 @@ import {
   useContext,
   useState,
 } from 'react';
-import { login, logout } from 'services/sessions';
+import { login, logout, refreshAccessToken } from 'services/sessions';
 import { IUser, ProfileRoleEnum } from '../types/index.d';
 // import { IUser, ProfileRoleEnum } from 'types';
 
@@ -30,6 +30,8 @@ interface IAuthContextData {
   refreshToken: string;
   signIn(credentials: SigninCredentials): Promise<ProfileRoleEnum>;
   signOut(): Promise<void>;
+  refreshUserToken(): Promise<void>;
+  clearAuth(): void;
 }
 
 const allowedRoles = [ProfileRoleEnum.Admin, ProfileRoleEnum.Professional];
@@ -73,6 +75,23 @@ export const AuthProvider: React.FC<IAuthContextProps> = ({ children }) => {
     setAuthData({} as IAuthState);
   }, []);
 
+  const clearAuth = () => {
+    localStorage.removeItem('@stagefy:token');
+    localStorage.removeItem('@stagefy:user');
+    localStorage.removeItem('@stagefy:refresh_token');
+    setAuthData({} as IAuthState);
+  };
+
+  const refreshUserToken = useCallback(async () => {
+    const { token, user, refreshToken } = await refreshAccessToken(
+      authData.refreshToken
+    );
+    localStorage.setItem('@stagefy:token', token);
+    localStorage.setItem('@stagefy:user', JSON.stringify(user));
+    localStorage.setItem('@stagefy:refresh_token', refreshToken);
+    setAuthData({ token, user, refreshToken });
+  }, [authData]);
+
   return (
     <AuthContext.Provider
       value={{
@@ -81,6 +100,8 @@ export const AuthProvider: React.FC<IAuthContextProps> = ({ children }) => {
         token: authData.token,
         refreshToken: authData.refreshToken,
         signOut,
+        refreshUserToken,
+        clearAuth,
       }}
     >
       {children}

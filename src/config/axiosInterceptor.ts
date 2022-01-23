@@ -21,12 +21,16 @@ function requestInterceptorError(error: AxiosError) {
 }
 
 function responseInterceptor(response: AxiosResponse) {
-  // console.info('Response Interceptor')
-  // console.log(response)
   return response;
 }
 
 async function responseInterceptorError(error: AxiosError) {
+  if (error.response?.status === 401) {
+    localStorage.removeItem('@stagefy:token');
+    localStorage.removeItem('@stagefy:user');
+    localStorage.removeItem('@stagefy:refresh_token');
+    window.location.replace('/');
+  }
   return Promise.reject(error);
 }
 

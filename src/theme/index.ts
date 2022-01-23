@@ -35,16 +35,34 @@ const theme = createTheme({
         },
       },
     },
-    // MuiButton: {
-    //   styleOverrides: {
-    //     text: {
-    //       fontWeight: 400,
-    //       fontSize: '0.875rem',
-    //       fontFamily: '"Baloo Bhaijaan 2", Geneva, Tahoma, sans-serif',
-    //       padding: 0,
-    //     },
-    //   },
-    // },
+    MuiTableHead: {
+      styleOverrides: {
+        root: {
+          '& .MuiTableCell-root': {
+            color: colors.secondaryMain,
+            fontFamily: '"Baloo Bhaijaan 2", Geneva, Tahoma, sans-serif',
+            fontWeight: 600,
+            fontSize: '0.875rem',
+            lineHeight: '1.5rem',
+            textAlign: 'center',
+          },
+        },
+      },
+    },
+    MuiTableBody: {
+      styleOverrides: {
+        root: {
+          '& .MuiTableCell-root': {
+            fontSize: '0.75rem',
+            fontWeight: 500,
+            fontFamily: '"Baloo Bhaijaan 2", Geneva, Tahoma, sans-serif',
+            lineHeight: '21px',
+            letterSpacing: '-0.2px',
+            textAlign: 'center',
+          },
+        },
+      },
+    },
     MuiInput: {
       styleOverrides: {
         root: {
