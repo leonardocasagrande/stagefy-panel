@@ -37,4 +37,11 @@ const logout = async () => {
   await Axios.delete('/sessions');
 };
 
-export { createAccount, login, logout };
+const refreshAccessToken = async (refreshToken: string) => {
+  const { data } = await Axios.post<ILoginResponse>('/sessions/refresh-token', {
+    refresh_token: refreshToken,
+  });
+  return data;
+};
+
+export { createAccount, login, logout, refreshAccessToken };

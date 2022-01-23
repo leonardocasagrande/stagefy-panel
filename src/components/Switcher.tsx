@@ -16,8 +16,6 @@ const Switcher = () => {
           const allowed =
             !route.permissions.length ||
             (!!user && route.permissions.includes(user.profileRole));
-          console.log(allowed);
-          console.log(route);
           const componentRoute = !allowed ? 'NotAllowed' : route.component;
           const Component = loadable(() => import(`pages/${componentRoute}`));
           const EnhacedComponent = withLoading(withError(Component));

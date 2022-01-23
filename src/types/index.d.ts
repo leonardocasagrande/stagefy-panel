@@ -30,3 +30,12 @@ export interface IProfessional {
   birthday: string;
   user: IUser;
 }
+
+export interface IEvent {
+  name: string;
+  image: string;
+  date: string;
+  views: number;
+  professional: IProfessional;
+  id: string;
+}

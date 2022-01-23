@@ -56,6 +56,12 @@ const typography: TypographyOptions = {
     lineHeight: '36px',
     textShadow: '0px 0px 0px rgba(0, 0, 0, 0.25)',
   },
+  subtitle2: {
+    fontSize: '1.125rem',
+    fontWeight: 600,
+    fontFamily: '"Baloo Bhaijaan 2", Geneva, Tahoma, sans-serif',
+    lineHeight: '2rem',
+  },
   body1: {
     fontSize: '1rem',
     letterSpacing: '0px',
@@ -77,6 +83,13 @@ const typography: TypographyOptions = {
     lineHeight: '1.71rem',
     textTransform: 'uppercase',
     letterSpacing: 0,
+  },
+  caption: {
+    fontSize: '0.75rem',
+    fontWeight: 500,
+    fontFamily: '"Baloo Bhaijaan 2", Geneva, Tahoma, sans-serif',
+    lineHeight: '21px',
+    letterSpacing: '-0.2px',
   },
 };
 

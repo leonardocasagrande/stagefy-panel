@@ -80,3 +80,7 @@
 .swal2-icon.swal2-error.swal2-error [class^=swal2-x-mark-line] {
   background-color: white;
 }
+
+.swal2-container.swal2-container {
+  z-index: 9999;
+}
