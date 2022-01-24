@@ -9,6 +9,7 @@ import {
   IconButton,
   TextField,
   Typography,
+  useMediaQuery,
   useTheme,
 } from '@mui/material';
 import { Box } from '@mui/system';
@@ -32,6 +33,7 @@ const StreamerProfile = () => {
   const [openConfirmation, setOpenConfirmation] = useState(false);
 
   const theme = useTheme();
+  const isSm = useMediaQuery(theme.breakpoints.down('sm'));
   const { user, refreshUserToken, clearAuth } = useAuth();
   const { setErrorMessage, setLoading, setSuccessMessage } = useApp();
 
@@ -164,7 +166,7 @@ const StreamerProfile = () => {
                 </FormHelperText>
               )}
             </Box>
-            <Box display="flex" gap={4}>
+            <Box display="flex" gap={4} flexDirection={isSm ? 'column' : 'row'}>
               <Box display="flex" flexDirection="column" gap={3} width={300}>
                 <Typography variant="h2">
                   {user.professional?.artisticName}

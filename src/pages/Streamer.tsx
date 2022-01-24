@@ -6,6 +6,7 @@ import {
   Container,
   Rating,
   Typography,
+  useMediaQuery,
   useTheme,
 } from '@mui/material';
 import Footer from 'components/Footer';
@@ -13,9 +14,11 @@ import Header from 'components/Header';
 import { useAuth } from 'hooks/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
+// TODO: Receber do back
 const SCORE = 2.8;
 const Streamer = () => {
   const theme = useTheme();
+  const isSm = useMediaQuery(theme.breakpoints.down('sm'));
   const { user } = useAuth();
 
   const navigate = useNavigate();
@@ -24,7 +27,13 @@ const Streamer = () => {
     <Box>
       <Header />
       <Container>
-        <Box display="flex" mt={8} mb={6} gap={4}>
+        <Box
+          display="flex"
+          mt={8}
+          mb={6}
+          gap={4}
+          flexDirection={isSm ? 'column' : 'row'}
+        >
           <Box display="flex" flexDirection="column">
             <Avatar src={user.avatar} sx={{ width: 300, height: 300 }} />
             <Card sx={{ mt: 3, boxShadow: 'none' }}>
