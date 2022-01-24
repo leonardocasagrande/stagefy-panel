@@ -1,3 +1,4 @@
+import { IProfessional } from 'types';
 import { Axios } from 'config/axiosFetcher';
 
 const acceptProfessional = async (id: string) => {
@@ -8,4 +9,45 @@ const refuseProfessional = async (id: string) => {
   await Axios.post(`/professionals/${id}/refuse`);
 };
 
-export { acceptProfessional, refuseProfessional };
+interface IUpdateProfile {
+  avatar?: File;
+  name: string;
+  artisticName: string;
+  birthday: string;
+  email: string;
+  phone: string;
+  bio: string;
+}
+
+const updateProfile = async ({
+  avatar,
+  name,
+  artisticName,
+  birthday,
+  email,
+  phone,
+  bio,
+}: IUpdateProfile) => {
+  const formData = new FormData();
+  if (avatar) formData.append('avatar', avatar);
+
+  formData.append('artisticName', artisticName);
+  formData.append('name', name);
+  formData.append('birthday', birthday);
+  formData.append('email', email);
+  formData.append('phone', phone);
+  formData.append('bio', bio);
+
+  const { data } = await Axios.put<IProfessional>('/professionals', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+  return data;
+};
+
+const deleteProfile = async () => {
+  await Axios.delete('/professionals');
+};
+
+export { acceptProfessional, refuseProfessional, updateProfile, deleteProfile };

@@ -79,7 +79,7 @@ const EventModal = ({ open, onClose, onSubmit }: IEventModalProps) => {
                 <Autocomplete
                   disablePortal
                   options={streamers}
-                  getOptionLabel={(opt) => opt.user.name}
+                  getOptionLabel={(opt) => opt.artisticName}
                   onChange={(_, value) =>
                     setFieldValue('professionalId', value?.user.id ?? '')
                   }

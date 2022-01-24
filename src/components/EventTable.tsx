@@ -78,7 +78,7 @@ const EventTable = ({
                 />
               </TableCell>
               <TableCell>{row.name}</TableCell>
-              <TableCell>{row.professional.user.name}</TableCell>
+              <TableCell>{row.professional.artisticName}</TableCell>
               <TableCell>
                 {new Date(row.date).toLocaleDateString('pt-br')}
               </TableCell>

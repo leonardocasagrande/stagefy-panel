@@ -3,6 +3,7 @@ import {
   ReactNode,
   useCallback,
   useContext,
+  useEffect,
   useState,
 } from 'react';
 import { login, logout, refreshAccessToken } from 'services/sessions';
@@ -91,6 +92,12 @@ export const AuthProvider: React.FC<IAuthContextProps> = ({ children }) => {
     localStorage.setItem('@stagefy:refresh_token', refreshToken);
     setAuthData({ token, user, refreshToken });
   }, [authData]);
+
+  useEffect(() => {
+    if (localStorage.getItem('@stagefy:refresh_token')) {
+      refreshUserToken();
+    }
+  }, []);
 
   return (
     <AuthContext.Provider

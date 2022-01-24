@@ -31,6 +31,18 @@ const routes: IRoute[] = [
     component: 'AdminCarousel',
     permissions: [ProfileRoleEnum.Admin],
   },
+  {
+    name: 'streamer',
+    path: '/profissional',
+    component: 'Streamer',
+    permissions: [ProfileRoleEnum.Professional],
+  },
+  {
+    name: 'streamerProfile',
+    path: '/profissional/perfil',
+    component: 'StreamerProfile',
+    permissions: [ProfileRoleEnum.Professional],
+  },
 ];
 
 export default routes;

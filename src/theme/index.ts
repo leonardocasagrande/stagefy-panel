@@ -72,6 +72,14 @@ const theme = createTheme({
         },
       },
     },
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          backgroundColor: colors.secondaryBg,
+          boxShadow: 'none',
+        },
+      },
+    },
   },
 });
 
