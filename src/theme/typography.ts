@@ -56,6 +56,13 @@ const typography: TypographyOptions = {
     lineHeight: '36px',
     textShadow: '0px 0px 0px rgba(0, 0, 0, 0.25)',
   },
+  h5: {
+    fontFamily: '"Baloo Bhaijaan 2", Geneva, Tahoma, sans-serif',
+    lineHeight: '1.5rem',
+    textTransform: 'uppercase',
+    fontSize: '0.875rem',
+    fontWeight: 600,
+  },
   subtitle2: {
     fontSize: '1.125rem',
     fontWeight: 600,

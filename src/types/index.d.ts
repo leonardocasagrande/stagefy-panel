@@ -21,6 +21,7 @@ export interface IUser {
   profileRole: ProfileRoleEnum;
   id: string;
   avatar?: string;
+  professional?: IProfessional;
 }
 
 export interface IProfessional {

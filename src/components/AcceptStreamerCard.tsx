@@ -1,5 +1,4 @@
 import { Avatar, Box, Button, Card, Stack, Typography } from '@mui/material';
-import { stringAvatar } from 'helpers/utils';
 import { useState } from 'react';
 import { IProfessional } from 'types';
 import ConfirmationModal from './modals/ConfirmationModal';
@@ -28,23 +27,15 @@ const AcceptStreamerCard = ({
     setOpenRefuse(false);
     onRefuse(professional.user.id);
   };
-
-  const avatarProps = professional.user.avatar
-    ? {
-        src: professional.user.avatar,
-        sx: {
-          width: 120,
-          height: 120,
-        },
-      }
-    : { ...stringAvatar(professional.user.name) };
-  avatarProps.sx = { ...avatarProps.sx, width: 120, height: 120 };
   return (
     <Card sx={{ maxWidth: 250 }}>
       <Stack direction="column" p={2} spacing={3} alignItems="center">
-        <Avatar {...avatarProps} />
+        <Avatar
+          src={professional.user.avatar}
+          sx={{ width: 120, height: 120 }}
+        />
         <Typography align="center" variant="h3">
-          {professional.user.name}
+          {professional.artisticName}
         </Typography>
         <Button onClick={() => setOpenDetails(true)} color="secondary">
           ver resumo

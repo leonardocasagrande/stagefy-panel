@@ -13,7 +13,7 @@ const roleDictionary: TRoleDictionary = {
     initialUrl: '/admin/consulta',
   },
   PROFESSIONAL: {
-    initialUrl: '/profissional/agenda',
+    initialUrl: '/profissional',
   },
 };
 
