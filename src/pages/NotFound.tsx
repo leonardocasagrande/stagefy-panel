@@ -1,21 +1,17 @@
 import { Box, Button, Container, Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-
 import notFound from 'assets/images/404.jpg';
 import { useAuth } from 'hooks/AuthContext';
-import roleDictionary from 'contents/roleDictionary';
+import { useNavigate } from 'react-router-dom';
+import { ProfileRoleEnum } from 'types';
 
 const NotFound = () => {
   const navigate = useNavigate();
 
   const { user } = useAuth();
   const handleGoBack = () => {
-    if (user && user.profileRole) {
-      const route = roleDictionary[user.profileRole];
-      if (route) {
-        navigate(route.initialUrl);
-        return;
-      }
+    if (user) {
+      navigate('/app');
+      return;
     }
     navigate('/');
   };

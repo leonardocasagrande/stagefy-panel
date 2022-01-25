@@ -23,7 +23,7 @@ const Header = () => {
         display={isSm ? 'flex' : 'block'}
         justifyContent="center"
       >
-        <ButtonBase onClick={() => navigate('/profissional')}>
+        <ButtonBase onClick={() => navigate('/app')}>
           <img height={41} width={193} src={logo} alt="logo" />
         </ButtonBase>
       </Box>

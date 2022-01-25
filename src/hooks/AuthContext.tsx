@@ -35,7 +35,7 @@ interface IAuthContextData {
   clearAuth(): void;
 }
 
-const allowedRoles = [ProfileRoleEnum.Admin, ProfileRoleEnum.Professional];
+const allowedRoles = [ProfileRoleEnum.Professional];
 
 export const AuthContext = createContext({} as IAuthContextData);
 

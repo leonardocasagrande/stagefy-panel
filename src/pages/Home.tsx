@@ -6,11 +6,11 @@ import {
   useMediaQuery,
   useTheme,
 } from '@mui/material';
+import stagefyLogo from 'assets/images/logo_stagefy.png';
 import axios from 'axios';
 import CreateAccountCard from 'components/CreateAccountCard';
 import LoginCard from 'components/LoginCard';
 import Modal from 'components/modals/Modal';
-import roleDictionary from 'contents/roleDictionary';
 import { useApp } from 'hooks/AppContext';
 import { useAuth } from 'hooks/AuthContext';
 import { useEffect, useState } from 'react';
@@ -18,7 +18,6 @@ import { useNavigate } from 'react-router-dom';
 import { TLoginSchema } from 'schemas/login';
 import { TUserSchema } from 'schemas/user';
 import { createAccount } from 'services/sessions';
-import stagefyLogo from 'assets/images/logo_stagefy.png';
 
 const Home = () => {
   const theme = useTheme();
@@ -43,8 +42,7 @@ const Home = () => {
 
   useEffect(() => {
     if (user) {
-      const role = roleDictionary[user.profileRole];
-      if (role) navigate(role.initialUrl);
+      navigate('/app');
     }
   }, [user, navigate]);
 
@@ -54,8 +52,8 @@ const Home = () => {
     } catch (err) {
       if (axios.isAxiosError(err) && err.response) {
         setErrorMessage(err.response.data.message);
-      } else if (typeof err === 'string') {
-        setErrorMessage(err);
+      } else if (err instanceof Error) {
+        setErrorMessage(err.message);
       }
     }
   };

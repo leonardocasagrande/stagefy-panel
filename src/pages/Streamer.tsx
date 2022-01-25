@@ -59,7 +59,7 @@ const Streamer = () => {
             </Card>
             <Box mt={5} display="flex" justifyContent="center">
               <Button
-                onClick={() => navigate('/profissional/perfil')}
+                onClick={() => navigate('/app/perfil')}
                 variant="contained"
                 color="secondary"
               >

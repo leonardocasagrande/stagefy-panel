@@ -1,14 +1,6 @@
 import { IProfessional } from 'types';
 import { Axios } from 'config/axiosFetcher';
 
-const acceptProfessional = async (id: string) => {
-  await Axios.post(`/professionals/${id}/accept`);
-};
-
-const refuseProfessional = async (id: string) => {
-  await Axios.post(`/professionals/${id}/refuse`);
-};
-
 interface IUpdateProfile {
   avatar?: File;
   name: string;
@@ -50,4 +42,4 @@ const deleteProfile = async () => {
   await Axios.delete('/professionals');
 };
 
-export { acceptProfessional, refuseProfessional, updateProfile, deleteProfile };
+export { updateProfile, deleteProfile };
